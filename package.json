@@ -40,10 +40,15 @@
   "devDependencies": {
     "@commitlint/cli": "^16.2.1",
     "@commitlint/config-conventional": "^16.2.1",
+    "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.3",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.5",
-    "prettier": "2.5.1"
+    "prettier": "2.5.1",
+    "stylelint": "^14.5.3",
+    "stylelint-config-standard": "^25.0.0"
   },
   "husky": {
     "hooks": {
@@ -51,6 +56,13 @@
     }
   },
   "lint-staged": {
-    "*.{js,css,md}": "prettier --write"
+    "*.{js,css,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{css,scss}": [
+      "stylelint src/**/*.css --fix",
+      "stylelint src/**/*.scss --fix"
+    ]
   }
 }
